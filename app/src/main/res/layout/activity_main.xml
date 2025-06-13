@@ -5,15 +5,104 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/home_bg"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+<!--    add button -->
+    <ImageButton
+        android:id="@+id/addButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/transparent"
+        android:scaleType="fitCenter"
+        android:visibility ="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.005"
+        app:srcCompat="@drawable/add_icon"
+        android:contentDescription="add"/>
 
+<!--    exit button -->
+    <ImageButton
+        android:id="@+id/exitButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/transparent"
+        android:scaleType="fitCenter"
+        android:contentDescription="exit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/addButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.005"
+        app:srcCompat="@drawable/exit_icon" />
+
+<!--    profile button -->
+    <ImageButton
+        android:id="@+id/profileButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/transparent"
+        android:scaleType="fitCenter"
+        android:contentDescription="profile"
+        app:tint="@color/orange"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/addButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.005"
+        app:srcCompat="@drawable/profile_icon" />
+
+<!--    no diary text -->
+    <TextView
+        android:id="@+id/noDiaryText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/questrial"
+        android:text="No diary available yet :("
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.356" />
+
+<!--    tittle text -->
+    <TextView
+        android:id="@+id/tittleMainText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/more_sugar"
+        android:text="You're Journey!"
+        android:textColor="@color/white"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/noDiaryText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.408" />
+
+<!--    add text -->
+    <TextView
+        android:id="@+id/addText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/more_sugar"
+        android:text="Add Here!!"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.359"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.842" />
 </androidx.constraintlayout.widget.ConstraintLayout>

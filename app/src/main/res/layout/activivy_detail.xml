@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/detail_bg">
+
+<!--    Tittle -->
+    <TextView
+        android:id="@+id/tittleDetailText"
+        android:layout_width="400sp"
+        android:layout_height="60sp"
+        android:layout_marginTop="52sp"
+        android:elevation="2sp"
+        android:fontFamily="@font/railey"
+        android:shadowColor="#5E000000"
+        android:shadowDx="5"
+        android:shadowDy="5"
+        android:shadowRadius="0.00000001"
+        android:text="Tell Us About You're Story"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageDetail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="TouchTargetSize" />
+
+<!--    image -->
+    <ImageView
+        android:id="@+id/imageDetail"
+        android:layout_width="150sp"
+        android:layout_height="180sp"
+        android:background="@drawable/rounded_corner"
+        android:contentDescription="NULL"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.252"
+        tools:srcCompat="@tools:sample/avatars" />
+
+<!--    post button-->
+    <Button
+        android:id="@+id/postButton"
+        android:layout_width="190sp"
+        android:layout_height="48sp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#9d8cc6"
+        android:fontFamily="@font/railey"
+        android:gravity="center"
+        android:text="Post"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.697"
+        tools:ignore="TouchTargetSize" />
+
+<!--    location text -->
+    <EditText
+        android:id="@+id/locationText"
+        android:layout_width="300sp"
+        android:layout_height="48sp"
+        android:layout_marginBottom="20sp"
+        android:autofillHints="null"
+        android:background="@drawable/rounded_side"
+        android:drawableStart="@drawable/baseline_location_on_24"
+        android:drawablePadding="0sp"
+        android:ems="10"
+        android:fontFamily="@font/questrial"
+        android:gravity="center"
+        android:hint="Add your location..."
+        android:inputType="text"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toTopOf="@+id/postButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.987"
+        tools:ignore="ContentDescription,VisualLintBounds" />
+
+<!--    caption text -->
+    <EditText
+        android:id="@+id/bodyDiary"
+        android:layout_width="300sp"
+        android:layout_height="48sp"
+        android:layout_marginBottom="12sp"
+        android:autofillHints="null"
+        android:background="@drawable/rounded_side"
+        android:ems="10"
+        android:fontFamily="@font/questrial"
+        android:gravity="top|center_horizontal"
+        android:hint="Write a caption and hastag..."
+        android:inputType="textMultiLine"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toTopOf="@+id/locationText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.96" />
+</androidx.constraintlayout.widget.ConstraintLayout>
