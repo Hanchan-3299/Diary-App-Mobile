@@ -10,55 +10,58 @@
 
 <!--    add button -->
     <ImageButton
-        android:id="@+id/addButton"
+        android:id="@+id/btnMainEdit"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:layout_marginBottom="-5dp"
         android:backgroundTint="@color/transparent"
+        android:contentDescription="add"
         android:scaleType="fitCenter"
-        android:visibility ="visible"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.005"
-        app:srcCompat="@drawable/add_icon"
-        android:contentDescription="add"/>
+        app:srcCompat="@drawable/add_icon" />
 
 <!--    exit button -->
     <ImageButton
-        android:id="@+id/exitButton"
+        android:id="@+id/btnMainExit"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:layout_marginBottom="-5dp"
         android:backgroundTint="@color/transparent"
-        android:scaleType="fitCenter"
         android:contentDescription="exit"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/addButton"
+        app:layout_constraintStart_toEndOf="@+id/btnMainEdit"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.005"
         app:srcCompat="@drawable/exit_icon" />
 
 <!--    profile button -->
     <ImageButton
-        android:id="@+id/profileButton"
+        android:id="@+id/btnMainDelete"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:layout_marginBottom="-5dp"
         android:backgroundTint="@color/transparent"
-        android:scaleType="fitCenter"
         android:contentDescription="profile"
-        app:tint="@color/orange"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/addButton"
+        app:layout_constraintEnd_toStartOf="@+id/btnMainEdit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.005"
-        app:srcCompat="@drawable/profile_icon" />
+        app:srcCompat="@drawable/profile_icon"
+        app:tint="@color/orange" />
 
 <!--    no diary text -->
     <TextView
-        android:id="@+id/noDiaryText"
+        android:id="@+id/txtMainNoDiaryText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/questrial"
@@ -74,24 +77,26 @@
         app:layout_constraintVertical_bias="0.356" />
 
 <!--    tittle text -->
+
+    <!--    add text -->
+
     <TextView
-        android:id="@+id/tittleMainText"
+        android:id="@+id/txtMainBigTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/more_sugar"
         android:text="You're Journey!"
         android:textColor="@color/white"
         android:textSize="48sp"
-        app:layout_constraintBottom_toTopOf="@+id/noDiaryText"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.408" />
+        app:layout_constraintVertical_bias="0.089" />
 
-<!--    add text -->
     <TextView
-        android:id="@+id/addText"
+        android:id="@+id/txtMainAddTextHint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/more_sugar"

@@ -1,29 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/main"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/regist_bg">
 
-    <!-- Background Image -->
-    <ImageView
-        android:id="@+id/regist"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/regist_bg"
-        tools:ignore="ContentDescription,ImageContrastCheck" />
-
-    <!-- Overlay Container -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/formContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <!-- Teks atas -->
         <TextView
-            android:id="@+id/topTitle"
+            android:id="@+id/txtRegisterBigTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/don_t_have_an_naccount_yet"
@@ -43,71 +31,84 @@
             android:text="@string/register_now"
             android:textSize="16sp"
             android:textColor="#FFFFFF"
-            app:layout_constraintTop_toBottomOf="@id/topTitle"
+            app:layout_constraintTop_toBottomOf="@id/txtRegisterBigTitle"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="24dp"
             tools:ignore="VisualLintOverlap" />
 
         <!-- Judul Form -->
-        <TextView
-            android:id="@+id/registerTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:text="@string/registration_form"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/topSubtitle" />
 
-        <!-- Email -->
-        <EditText
-            android:id="@+id/emailEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="50dp"
-            android:background="@drawable/edit_text_bg"
-            android:hint="@string/email_address"
-            android:importantForAutofill="no"
-            android:padding="16dp"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textColorHint="#757575"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/registerTitle"
-            tools:ignore="Autofill,TextFields,VisualLintTextFieldSize,TextContrastCheck" />
+    <!-- Email -->
 
-        <!-- Password -->
-        <EditText
-            android:id="@+id/passwordEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="50dp"
-            android:background="@drawable/edit_text_bg"
-            android:hint="Password"
-            android:padding="16dp"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textColorHint="#757575"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/emailEditText"
-            tools:ignore="Autofill,HardcodedText,TextFields,TextContrastCheck,VisualLintTextFieldSize" />
+    <!-- Password -->
 
-        <!-- Button Register -->
-        <Button
-            android:id="@+id/registerButton"
+    <TextView
+        android:id="@+id/txtRegisterTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="@string/registration_form"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.248" />
+
+    <EditText
+        android:id="@+id/etRegisterEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/edit_text_bg"
+        android:hint="@string/email_address"
+        android:importantForAutofill="no"
+        android:padding="16dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textColorHint="#757575"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtRegisterTitle"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="Autofill,TextFields,VisualLintTextFieldSize,TextContrastCheck" />
+
+    <!-- Button Register -->
+
+    <EditText
+        android:id="@+id/etRegisterPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/edit_text_bg"
+        android:hint="Password"
+        android:padding="16dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textColorHint="#757575"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etRegisterEmail"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="Autofill,HardcodedText,TextFields,TextContrastCheck,VisualLintTextFieldSize" />
+
+    <Button
+            android:id="@+id/btnRegisterRegister"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_marginTop="24dp"
@@ -115,19 +116,38 @@
             android:text="@string/register"
             android:textAlignment="center"
             android:textColor="#212121"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/passwordEditText" />
+            app:layout_constraintTop_toBottomOf="@id/etRegisterPassword"
+            app:layout_constraintVertical_bias="0.161" />
 
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="128dp"
-            android:layout_height="484dp"
-            app:srcCompat="@drawable/bunga_regist"
-            tools:ignore="ContentDescription,MissingConstraints,VisualLintBounds"
-            tools:layout_editor_absoluteX="7dp"
-            tools:layout_editor_absoluteY="55dp" />
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="128dp"
+        android:layout_height="484dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.024"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.283"
+        app:srcCompat="@drawable/bunga_regist"
+        tools:ignore="ContentDescription,MissingConstraints,VisualLintBounds" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+            android:id="@+id/txtRegisterLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/already_have_an_account_login_now"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etRegisterPassword"
+            app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

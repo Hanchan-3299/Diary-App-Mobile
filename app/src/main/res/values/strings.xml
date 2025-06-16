@@ -9,4 +9,13 @@
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="welcome_to_n_mydiary">Welcome To, \n MyDiary</string>
+    <string name="google">Google</string>
+    <string name="profile">profile</string>
+    <string name="add">add</string>
+    <string name="exit">exit</string>
+    <string name="title">Title</string>
+    <string name="you_re_journey">You\'re Journey!</string>
+    <string name="don_t_have_an_account_yet_register_now">Don\'t have an account yet ? Register now</string>
+    <string name="default_web_client_id">517104729540-lb95k0konjio10eeq68a4u91eoohfrvp.apps.googleusercontent.com</string>
+    <string name="already_have_an_account_login_now">Already have an account ? Login Now</string>
 </resources>

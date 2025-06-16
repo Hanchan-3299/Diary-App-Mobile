@@ -7,12 +7,11 @@
     android:layout_height="match_parent"
     android:background="@drawable/detail_bg">
 
-<!--    Tittle -->
+
     <TextView
-        android:id="@+id/tittleDetailText"
+        android:id="@+id/txtNoteBigTitle"
         android:layout_width="400sp"
         android:layout_height="60sp"
-        android:layout_marginTop="52sp"
         android:elevation="2sp"
         android:fontFamily="@font/railey"
         android:shadowColor="#5E000000"
@@ -23,37 +22,38 @@
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageDetail"
+        app:layout_constraintBottom_toTopOf="@+id/imgNote"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.251"
         tools:ignore="TouchTargetSize" />
 
-<!--    image -->
+    <!--    location text -->
+
+    <!--    caption text -->
+
     <ImageView
-        android:id="@+id/imageDetail"
+        android:id="@+id/imgNote"
         android:layout_width="150sp"
-        android:layout_height="180sp"
-        android:background="@drawable/rounded_corner"
+        android:layout_height="150sp"
+        android:background="@android:drawable/ic_menu_gallery"
         android:contentDescription="NULL"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintVertical_bias="0.067"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.252"
+        app:layout_constraintTop_toBottomOf="@+id/etNoteTitle"
         tools:srcCompat="@tools:sample/avatars" />
 
-<!--    post button-->
     <Button
-        android:id="@+id/postButton"
+        android:id="@+id/btnNotePost"
         android:layout_width="190sp"
         android:layout_height="48sp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#9d8cc6"
+        android:backgroundTint="#03A9F4"
         android:fontFamily="@font/railey"
         android:gravity="center"
         android:text="Post"
@@ -63,42 +63,41 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.697"
+        app:layout_constraintTop_toBottomOf="@+id/multiEtNoteBodyDiary"
+        app:layout_constraintVertical_bias="0.107"
         tools:ignore="TouchTargetSize" />
 
-<!--    location text -->
     <EditText
-        android:id="@+id/locationText"
-        android:layout_width="300sp"
-        android:layout_height="48sp"
-        android:layout_marginBottom="20sp"
+        android:id="@+id/etNoteTitle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:autofillHints="null"
         android:background="@drawable/rounded_side"
-        android:drawableStart="@drawable/baseline_location_on_24"
         android:drawablePadding="0sp"
         android:ems="10"
         android:fontFamily="@font/questrial"
         android:gravity="center"
-        android:hint="Add your location..."
+        android:hint="Add the Title"
         android:inputType="text"
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textColorHint="@color/gray"
-        android:textSize="11sp"
-        app:layout_constraintBottom_toTopOf="@+id/postButton"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.987"
+        app:layout_constraintVertical_bias="0.224"
         tools:ignore="ContentDescription,VisualLintBounds" />
 
-<!--    caption text -->
     <EditText
-        android:id="@+id/bodyDiary"
-        android:layout_width="300sp"
-        android:layout_height="48sp"
-        android:layout_marginBottom="12sp"
+        android:id="@+id/multiEtNoteBodyDiary"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
         android:autofillHints="null"
         android:background="@drawable/rounded_side"
         android:ems="10"
@@ -106,13 +105,15 @@
         android:gravity="top|center_horizontal"
         android:hint="Write a caption and hastag..."
         android:inputType="textMultiLine"
+        android:scrollbars="vertical"
+        android:overScrollMode="always"
         android:textColor="@color/black"
         android:textColorHint="@color/gray"
-        android:textSize="11sp"
-        app:layout_constraintBottom_toTopOf="@+id/locationText"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.96" />
+        app:layout_constraintTop_toBottomOf="@+id/imgNote"
+        app:layout_constraintVertical_bias="0.074" />
 </androidx.constraintlayout.widget.ConstraintLayout>
