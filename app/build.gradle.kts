@@ -46,6 +46,13 @@ dependencies {
 
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
+
+    implementation(libs.glide)
+    annotationProcessor(libs.compiler)
+    implementation(libs.firebase.database)
+    implementation(libs.ucrop)
+
+    implementation(libs.cardview);
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

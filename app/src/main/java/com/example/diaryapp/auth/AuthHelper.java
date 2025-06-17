@@ -7,6 +7,7 @@ import android.widget.Toast;
 import com.example.diaryapp.MainActivity;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 import java.util.Objects;
@@ -36,5 +37,13 @@ public class AuthHelper {
                         Toast.makeText(activity, "Firebase Google Auth Failed", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    public static void loginChecker (Activity activity, FirebaseUser user) {
+        if (user == null){
+            Toast.makeText(activity, "You haven't logged in yet", Toast.LENGTH_SHORT).show();
+            activity.finish();
+            return;
+        }
     }
 }

@@ -8,9 +8,29 @@
     android:background="@drawable/home_bg"
     tools:context=".MainActivity">
 
+    <!-- RecyclerView untuk daftar catatan -->
+
+    <!-- TextView: Tambah Catatan -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/noteRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="50dp"
+        android:padding="12dp"
+        android:background="#AAFFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/txtMainAddTextHint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMainBigTitle"
+        app:layout_constraintVertical_bias="1.0" />
+
 <!--    add button -->
     <ImageButton
-        android:id="@+id/btnMainEdit"
+        android:id="@+id/btnMainAdd"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginBottom="-5dp"
@@ -37,14 +57,14 @@
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnMainEdit"
+        app:layout_constraintStart_toEndOf="@+id/btnMainAdd"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.005"
         app:srcCompat="@drawable/exit_icon" />
 
 <!--    profile button -->
     <ImageButton
-        android:id="@+id/btnMainDelete"
+        android:id="@+id/btnMainProfil"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginBottom="-5dp"
@@ -52,7 +72,7 @@
         android:contentDescription="profile"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnMainEdit"
+        app:layout_constraintEnd_toStartOf="@+id/btnMainAdd"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.005"
@@ -60,6 +80,11 @@
         app:tint="@color/orange" />
 
 <!--    no diary text -->
+
+    <!--    tittle text -->
+
+    <!--    add text -->
+
     <TextView
         android:id="@+id/txtMainNoDiaryText"
         android:layout_width="wrap_content"
@@ -73,12 +98,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.356" />
-
-<!--    tittle text -->
-
-    <!--    add text -->
+        app:layout_constraintTop_toTopOf="@+id/txtMainBigTitle"
+        app:layout_constraintVertical_bias="0.295" />
 
     <TextView
         android:id="@+id/txtMainBigTitle"

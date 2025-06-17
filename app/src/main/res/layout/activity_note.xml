@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/detail_bg">
+    android:background="@drawable/note_bg">
 
 
     <TextView
@@ -22,7 +22,7 @@
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@+id/imgNote"
+        app:layout_constraintBottom_toTopOf="@+id/imgDetailNote"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +35,7 @@
     <!--    caption text -->
 
     <ImageView
-        android:id="@+id/imgNote"
+        android:id="@+id/imgDetailNote"
         android:layout_width="150sp"
         android:layout_height="150sp"
         android:background="@android:drawable/ic_menu_gallery"
@@ -114,6 +114,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgNote"
+        app:layout_constraintTop_toBottomOf="@+id/imgDetailNote"
         app:layout_constraintVertical_bias="0.074" />
 </androidx.constraintlayout.widget.ConstraintLayout>
