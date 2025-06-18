@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +23,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.diaryapp.R;
 import com.example.diaryapp.auth.AuthHelper;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -40,6 +43,10 @@ public class NoteActivity extends AppCompatActivity {
 
     Button btnSave;
     ProgressBar progressBar;
+    FusedLocationProviderClient fusedLocationClient;
+    boolean locationResolved = false;
+    Handler timeOutHandler;
+    Runnable timeOutRunnable;
 
     static final int REQUEST_CAMERA = 100;
     static final int REQUEST_GALLERY = 200;
@@ -76,8 +83,10 @@ public class NoteActivity extends AppCompatActivity {
 
             String title = etTitle.getText().toString().trim();
             String message  = etMessage.getText().toString().trim();
-            NoteHelper.saveNoteToDatabase(title, message, imageBitmap, userId, notesRef, 640, 480, NoteActivity.this);
+            NoteHelper.getLastLocationAndSaveNote(fusedLocationClient, title, message, imageBitmap, userId, notesRef, 640, 480, NoteActivity.this);
         });
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -89,10 +98,18 @@ public class NoteActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults, int deviceId) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults, deviceId);
-        if (requestCode == CAMERA_PERMISSION_CODE){
+        if (requestCode == REQUEST_CAMERA){
             if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                ImageHelper.openCamera(NoteActivity.this);
+                String title = etTitle.getText().toString().trim();
+                String message  = etMessage.getText().toString().trim();
+                NoteHelper.getLastLocationAndSaveNote(fusedLocationClient, title, message, imageBitmap, userId, notesRef, 640, 480, NoteActivity.this);
             }else{
+                Toast.makeText(this, "Location Permission Denied", Toast.LENGTH_SHORT).show();
+            }
+        }else if (requestCode == CAMERA_PERMISSION_CODE){
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                ImageHelper.openCamera(NoteActivity.this);
+            } else {
                 Toast.makeText(this, "Camera Permission Denied", Toast.LENGTH_SHORT).show();
             }
         }

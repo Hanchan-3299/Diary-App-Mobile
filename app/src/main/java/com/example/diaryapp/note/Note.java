@@ -1,17 +1,21 @@
 package com.example.diaryapp.note;
 
 public class Note {
-    public String noteId, title,  message, date, imageBase64, userId;
+    public String noteId, title,  message, date, imageBase64, userId, locationName;
+    double latitude, longitude;
 
     public Note() {}
 
-    public Note(String noteId, String title, String message, String date, String imageBase64, String userId) {
+    public Note(String noteId, String title, String message, String date, String imageBase64, String userId, double latitude, double longitude, String locationName) {
         this.noteId = noteId;
         this.title = title;
         this.message = message;
         this.date = date;
         this.imageBase64 = imageBase64;
         this.userId = userId;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.locationName = locationName;
     }
 
     public String getNoteId() {
@@ -60,5 +64,29 @@ public class Note {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public String getLocationName() {
+        return locationName;
+    }
+
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 }

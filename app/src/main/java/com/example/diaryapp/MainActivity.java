@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("message", note.message);
             intent.putExtra("date", note.date);
             intent.putExtra("imageBase64", note.imageBase64);
+            intent.putExtra("locationName", note.locationName);
             startActivity(intent);
         });
 
