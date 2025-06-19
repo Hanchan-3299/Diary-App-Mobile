@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.diaryapp.auth.LoginActivity;
+import com.example.diaryapp.networkHelper.NetworkCallBackUtil;
 import com.example.diaryapp.note.DetailActivity;
 import com.example.diaryapp.note.Note;
 import com.example.diaryapp.note.NoteActivity;
@@ -43,11 +44,16 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference notesRef;
     String currentUserId;
 
+    private NetworkCallBackUtil networkCallbackHelper;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+        networkCallbackHelper = new NetworkCallBackUtil();
 
         //inisialisasi
         mAuth = FirebaseAuth.getInstance();
@@ -117,5 +123,16 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        networkCallbackHelper.registerNetworkCallback(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        networkCallbackHelper.unregisterNetworkCallback(this);
     }
 }

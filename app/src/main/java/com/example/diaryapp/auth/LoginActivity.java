@@ -16,6 +16,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.diaryapp.MainActivity;
 import com.example.diaryapp.R;
+import com.example.diaryapp.networkHelper.NetworkCallBackUtil;
+import com.example.diaryapp.networkHelper.NetworkUtil;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -37,10 +39,14 @@ public class LoginActivity extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClient;
     private final int RC_SIGN_IN = 9001;
 
+    private NetworkCallBackUtil networkCallbackHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
+
+        networkCallbackHelper = new NetworkCallBackUtil();
 
         //cek apakah user sudah login
         if (FirebaseAuth.getInstance().getCurrentUser() != null){
@@ -93,6 +99,11 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
+                    if (!NetworkUtil.isInternetAvailable(this)) {
+                        Toast.makeText(this, "No Internet, Please check your connection.", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+
                     if (task.isSuccessful()){
 
                         boolean isNewUser = Objects.requireNonNull(task.getResult().getAdditionalUserInfo()).isNewUser();
@@ -113,6 +124,11 @@ public class LoginActivity extends AppCompatActivity {
 
         //Login dengan Google
         btnGoogleLogin.setOnClickListener(v -> {
+            if (!NetworkUtil.isInternetAvailable(this)) {
+                Toast.makeText(this, "No Internet, Please check your connection.", Toast.LENGTH_LONG).show();
+                return;
+            }
+
             mGoogleSignInClient.signOut().addOnCompleteListener(task -> {
                 Intent signInIntent = mGoogleSignInClient.getSignInIntent();
                 startActivityForResult(signInIntent, RC_SIGN_IN);
@@ -122,6 +138,10 @@ public class LoginActivity extends AppCompatActivity {
 
         //navigasi ke register
         txtRegister.setOnClickListener(v -> {
+            if (!NetworkUtil.isInternetAvailable(this)) {
+                Toast.makeText(this, "No Internet, Please check your connection.", Toast.LENGTH_LONG).show();
+                return;
+            }
             startActivity(new Intent(this, RegisterActivity.class));
         });
 
@@ -131,6 +151,18 @@ public class LoginActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        networkCallbackHelper.registerNetworkCallback(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        networkCallbackHelper.unregisterNetworkCallback(this);
     }
 
     @Override

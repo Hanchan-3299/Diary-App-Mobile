@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.widget.Toast;
 
 import com.example.diaryapp.MainActivity;
+import com.example.diaryapp.networkHelper.NetworkUtil;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,6 +20,10 @@ public class AuthHelper {
 
     //Autentikasi Firebase dengan token Google
     public static void fireBaseAuthWithGoogle (Activity activity, String idToken){
+        if (!NetworkUtil.isInternetAvailable(activity)) {
+            Toast.makeText(activity, "No Internet, Please check your connection.", Toast.LENGTH_LONG).show();
+            return;
+        }
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
         mAuth.signInWithCredential(credential)
@@ -40,6 +45,10 @@ public class AuthHelper {
     }
 
     public static void loginChecker (Activity activity, FirebaseUser user) {
+        if (!NetworkUtil.isInternetAvailable(activity)) {
+            Toast.makeText(activity, "No Internet, Please check your connection.", Toast.LENGTH_LONG).show();
+            return;
+        }
         if (user == null){
             Toast.makeText(activity, "You haven't logged in yet", Toast.LENGTH_SHORT).show();
             activity.finish();

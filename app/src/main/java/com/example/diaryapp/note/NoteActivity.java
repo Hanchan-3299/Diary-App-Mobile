@@ -28,6 +28,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.diaryapp.MainActivity;
 import com.example.diaryapp.R;
 import com.example.diaryapp.auth.AuthHelper;
+import com.example.diaryapp.networkHelper.NetworkCallBackUtil;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.firebase.auth.FirebaseAuth;
@@ -61,11 +62,15 @@ public class NoteActivity extends AppCompatActivity {
     static final int REQUEST_GALLERY = 200;
     static final int CAMERA_PERMISSION_CODE = 101;
 
+    private NetworkCallBackUtil networkCallbackHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_note);
+
+        networkCallbackHelper = new NetworkCallBackUtil();
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         AuthHelper.loginChecker(NoteActivity.this, user);
@@ -123,7 +128,7 @@ public class NoteActivity extends AppCompatActivity {
             }
 
             if (imageBitmap == null) {
-                Toast.makeText(NoteActivity.this, "Pilih gambar terlebih dahulu", Toast.LENGTH_SHORT).show();
+                Toast.makeText(NoteActivity.this, "Choose the image first", Toast.LENGTH_SHORT).show();
                 return;
             }
             if (isUpdateMode && noteId != null) {
@@ -167,6 +172,18 @@ public class NoteActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        networkCallbackHelper.registerNetworkCallback(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        networkCallbackHelper.unregisterNetworkCallback(this);
     }
 
     @Override

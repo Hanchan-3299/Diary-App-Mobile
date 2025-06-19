@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 
 import com.example.diaryapp.auth.AuthHelper;
+import com.example.diaryapp.networkHelper.NetworkUtil;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationAvailability;
 import com.google.android.gms.location.LocationCallback;
@@ -71,6 +72,10 @@ public class NoteHelper {
 
     //ambil new location dan save ke database
     public static void getLastLocationAndSaveNote(FusedLocationProviderClient fusedLocationClient, String noteId, String title, String message, Bitmap imageBitmap, String userId, DatabaseReference notesRef, int dstWidth, int dstHeight, Activity activity){
+        if (!NetworkUtil.isInternetAvailable(activity)) {
+            Toast.makeText(activity, "No Internet, Please check your connection.", Toast.LENGTH_LONG).show();
+            return;
+        }
 
         if (title.isEmpty() || message.isEmpty()){
             Toast.makeText(activity, "Title & Message must be filled", Toast.LENGTH_SHORT).show();
@@ -78,7 +83,7 @@ public class NoteHelper {
         }
 
         if(imageBitmap == null) {
-            Toast.makeText(activity, "Pilih gambar dulu", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, "Choose the image first", Toast.LENGTH_SHORT).show();
             return;
         }
 
