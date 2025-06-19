@@ -1,12 +1,16 @@
 package com.example.diaryapp.note;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.util.Base64;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -21,14 +25,18 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.diaryapp.MainActivity;
 import com.example.diaryapp.R;
 import com.example.diaryapp.auth.AuthHelper;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.yalantis.ucrop.UCrop;
 
 import java.io.IOException;
@@ -39,7 +47,8 @@ public class NoteActivity extends AppCompatActivity {
     ImageView imageView;
     Bitmap imageBitmap;
     DatabaseReference notesRef;
-    String userId;
+    String userId, noteId;
+    boolean isUpdateMode = false;
 
     Button btnSave;
     ProgressBar progressBar;
@@ -71,6 +80,27 @@ public class NoteActivity extends AppCompatActivity {
         notesRef = FirebaseDatabase.getInstance().getReference("notes");
         userId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
 
+        //update mode
+        Intent intent = getIntent();
+        noteId = intent.getStringExtra("noteId");
+        String title = intent.getStringExtra("title");
+        String message = intent.getStringExtra("message");
+        String imageBase64 = intent.getStringExtra("imageBase64");
+        Log.d("NoteActivity", "Received noteId: " + noteId);
+
+        isUpdateMode = (noteId != null);
+        if (isUpdateMode){
+            btnSave.setText("Update");
+            etTitle.setText(title);
+            etMessage.setText(message);
+
+            if (imageBase64 != null) {
+                byte[] decoded = Base64.decode(imageBase64, Base64.DEFAULT);
+                imageBitmap = BitmapFactory.decodeByteArray(decoded, 0, decoded.length);
+                imageView.setImageBitmap(imageBitmap);
+            }
+        }
+
         //pilih gambar
         imageView.setOnClickListener(v -> {
             ImageHelper.showImagePickerDialog(NoteActivity.this);
@@ -81,9 +111,53 @@ public class NoteActivity extends AppCompatActivity {
             AuthHelper.loginChecker(NoteActivity.this, user);
             userId = user.getUid();
 
-            String title = etTitle.getText().toString().trim();
-            String message  = etMessage.getText().toString().trim();
-            NoteHelper.getLastLocationAndSaveNote(fusedLocationClient, title, message, imageBitmap, userId, notesRef, 640, 480, NoteActivity.this);
+            String inputTitle = etTitle.getText().toString().trim();
+            String inputMessage = etMessage.getText().toString().trim();
+
+            // Fallback ke hint jika kosong
+            if (inputTitle.isEmpty()) {
+                inputTitle = etTitle.getHint() != null ? etTitle.getHint().toString() : "";
+            }
+            if (inputMessage.isEmpty()) {
+                inputMessage = etMessage.getHint() != null ? etMessage.getHint().toString() : "";
+            }
+
+            if (imageBitmap == null) {
+                Toast.makeText(NoteActivity.this, "Pilih gambar terlebih dahulu", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (isUpdateMode && noteId != null) {
+                String[] options = {"Yes", "No"};
+                String finalInputTitle = inputTitle;
+                String finalInputMessage = inputMessage;
+                new AlertDialog.Builder(this)
+                        .setTitle("Update Note ?")
+                        .setItems(options, (dialog, which) -> {
+                            if (which == 0){
+                                // Update mode
+                                NoteHelper.getLastLocationAndSaveNote(
+                                        fusedLocationClient, noteId, finalInputTitle, finalInputMessage, imageBitmap, userId,
+                                        notesRef, 640, 480, NoteActivity.this);
+                            }else {
+                                Toast.makeText(this, "Update Canceled", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                        }).show();
+            }else{
+                String[] options = {"Yes", "No"};
+                String finalInputTitle = inputTitle;
+                String finalInputMessage = inputMessage;
+                new AlertDialog.Builder(this)
+                        .setTitle("Post Note ?")
+                        .setItems(options, (dialog, which) -> {
+                            if (which == 0){
+                                NoteHelper.getLastLocationAndSaveNote(fusedLocationClient, null, finalInputTitle, finalInputMessage, imageBitmap, userId, notesRef, 640, 480, NoteActivity.this);
+                            }else {
+                                Toast.makeText(this, "Add Note Canceled", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                        }).show();
+            }
         });
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
@@ -102,7 +176,7 @@ public class NoteActivity extends AppCompatActivity {
             if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 String title = etTitle.getText().toString().trim();
                 String message  = etMessage.getText().toString().trim();
-                NoteHelper.getLastLocationAndSaveNote(fusedLocationClient, title, message, imageBitmap, userId, notesRef, 640, 480, NoteActivity.this);
+                NoteHelper.getLastLocationAndSaveNote(fusedLocationClient, noteId, title, message, imageBitmap, userId, notesRef, 640, 480, NoteActivity.this);
             }else{
                 Toast.makeText(this, "Location Permission Denied", Toast.LENGTH_SHORT).show();
             }

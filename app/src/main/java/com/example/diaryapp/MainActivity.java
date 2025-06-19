@@ -1,5 +1,6 @@
 package com.example.diaryapp;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -65,11 +66,13 @@ public class MainActivity extends AppCompatActivity {
 
             //intent ke detail activity
             Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+            intent.putExtra("noteId", note.noteId);
             intent.putExtra("title", note.title);
             intent.putExtra("message", note.message);
             intent.putExtra("date", note.date);
             intent.putExtra("imageBase64", note.imageBase64);
             intent.putExtra("locationName", note.locationName);
+            intent.putExtra("userId", note.userId);
             startActivity(intent);
         });
 
@@ -86,18 +89,27 @@ public class MainActivity extends AppCompatActivity {
 
         //logout
         btnLogout.setOnClickListener(v -> {
-            mAuth.signOut();
+            String[] options = {"Yes", "No"};
+            new AlertDialog.Builder(this)
+                    .setTitle("Are you sure want to exit from MyDiary ?")
+                    .setItems(options, (dialog, which) -> {
+                        if (which == 0){
+                            mAuth.signOut();
 
-            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                    .requestIdToken(getString(R.string.default_web_client_id))
-                    .requestEmail()
-                    .build();
+                            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                                    .requestIdToken(getString(R.string.default_web_client_id))
+                                    .requestEmail()
+                                    .build();
 
-            GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-            mGoogleSignInClient.signOut().addOnCompleteListener(task -> {
-                startActivity(new Intent(this, LoginActivity.class));
-                finish();
-            });
+                            GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+                            mGoogleSignInClient.signOut().addOnCompleteListener(task -> {
+                                startActivity(new Intent(this, LoginActivity.class));
+                                finish();
+                            });
+                        }else {
+                            return;
+                        }
+                    }).show();
         });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {

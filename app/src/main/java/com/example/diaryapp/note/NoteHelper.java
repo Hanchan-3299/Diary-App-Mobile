@@ -41,7 +41,7 @@ import java.util.Locale;
 public class NoteHelper {
 
     //save note ke database
-    public static void saveNoteToDatabase(String noteId, String title, String message, Bitmap imageBitmap, String userId, DatabaseReference notesRef, int dstWidth, int dstHeight, double latitude, double longitude, String locationName, Activity activity){
+    public static void saveNoteToDatabase(String noteId, String title, String message, Bitmap imageBitmap, String userId, DatabaseReference notesRef, int dstWidth, int dstHeight, double latitude, double longitude, String locationName, boolean isUpdate, Activity activity){
         String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
 
 
@@ -49,20 +49,28 @@ public class NoteHelper {
         String encodedImage = ImageHelper.encodeImageToBase64(scaledBitmap, 50);
 
         Note note = new Note(noteId, title, message, date, encodedImage, userId, latitude, longitude, locationName);
-        notesRef.child(userId).push().setValue(note)
+        notesRef.child(userId).child(noteId).setValue(note)
                 .addOnSuccessListener(unused -> {
-                    Toast.makeText(activity, "Note Saved", Toast.LENGTH_SHORT).show();
+                    if (isUpdate) {
+                        Toast.makeText(activity, "Note updated", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(activity, "Note Saved", Toast.LENGTH_SHORT).show();
+                    }
                     activity.finish();
                 })
                 .addOnFailureListener(e -> {
-                    Toast.makeText(activity, "Failed to Save Note", Toast.LENGTH_SHORT).show();
+                    if (isUpdate){
+                        Toast.makeText(activity, "Failed to update Note", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(activity, "Failed to save Note", Toast.LENGTH_SHORT).show();
+                    }
                 });
 
     }
 
 
     //ambil new location dan save ke database
-    public static void getLastLocationAndSaveNote(FusedLocationProviderClient fusedLocationClient, String title, String message, Bitmap imageBitmap, String userId, DatabaseReference notesRef, int dstWidth, int dstHeight, Activity activity){
+    public static void getLastLocationAndSaveNote(FusedLocationProviderClient fusedLocationClient, String noteId, String title, String message, Bitmap imageBitmap, String userId, DatabaseReference notesRef, int dstWidth, int dstHeight, Activity activity){
 
         if (title.isEmpty() || message.isEmpty()){
             Toast.makeText(activity, "Title & Message must be filled", Toast.LENGTH_SHORT).show();
@@ -81,7 +89,9 @@ public class NoteHelper {
             return;
         }
 
-        String noteId = notesRef.push().getKey();
+//        String noteId = notesRef.push().getKey();
+        boolean isUpdate = noteId != null && !noteId.trim().isEmpty();
+        String noteIdToUse = noteId != null && !noteId.trim().isEmpty()? noteId : notesRef.child(userId).push().getKey();
         Handler timeOutHandler = new Handler(Looper.getMainLooper());
 
         // karena variable ini ada di scope fungsi, maka di lambda gabisa di edit, kecuali diakali pakai final array,
@@ -90,7 +100,7 @@ public class NoteHelper {
 
         Runnable timeOutRunnable = () -> {
             if (!locationResolved[0]){
-                saveNoteToDatabase(noteId, title, message, imageBitmap, userId, notesRef, dstWidth, dstHeight, 0.0, 0.0, "Unknown Location", activity);
+                saveNoteToDatabase(noteIdToUse, title, message, imageBitmap, userId, notesRef, dstWidth, dstHeight, 0.0, 0.0, "Unknown Location", isUpdate, activity);
             }
         };
         timeOutHandler.postDelayed(timeOutRunnable, 3000);
@@ -117,22 +127,22 @@ public class NoteHelper {
                     }
                 }
 
-                saveNoteToDatabase(noteId, title, message, imageBitmap, userId, notesRef, dstWidth, dstHeight, latitude, longitude, locationName, activity);
+                saveNoteToDatabase(noteIdToUse, title, message, imageBitmap, userId, notesRef, dstWidth, dstHeight, latitude, longitude, locationName, isUpdate, activity);
             } else {
-                requestNewLocationData(fusedLocationClient, locationResolved, noteId, title, message, imageBitmap, userId, notesRef, dstWidth, dstHeight, activity);  // fallback, jika null minta new location
+                requestNewLocationData(fusedLocationClient, locationResolved, noteIdToUse, title, message, imageBitmap, userId, notesRef, dstWidth, dstHeight, isUpdate, activity);  // fallback, jika null minta new location
             }
         }).addOnFailureListener(e -> {
             if (!locationResolved[0]){
                 locationResolved[0] = true;
                 timeOutHandler.removeCallbacks(timeOutRunnable);
                 Toast.makeText(activity, "Gagal mendapatkan lokasi", Toast.LENGTH_SHORT).show();
-                saveNoteToDatabase(noteId, title, message, imageBitmap, userId, notesRef, dstWidth, dstHeight,0.0, 0.0, "Unknown Location", activity);
+                saveNoteToDatabase(noteIdToUse, title, message, imageBitmap, userId, notesRef, dstWidth, dstHeight,0.0, 0.0, "Unknown Location", isUpdate, activity);
             }
         });
     }
 
     //ambil lokasi
-    private static void requestNewLocationData(FusedLocationProviderClient fusedLocationClient, boolean[] locationResolved, String noteId, String title, String message, Bitmap imageBitmap, String userId, DatabaseReference notesRef, int dstWidth, int dstHeight, Activity activity) {
+    private static void requestNewLocationData(FusedLocationProviderClient fusedLocationClient, boolean[] locationResolved, String noteId, String title, String message, Bitmap imageBitmap, String userId, DatabaseReference notesRef, int dstWidth, int dstHeight, boolean isUpdate, Activity activity) {
         LocationRequest locationRequest = new LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY)
                 .setMaxUpdates(1)
                 .build();
@@ -153,7 +163,7 @@ public class NoteHelper {
             if (!locationResolved[0]) {
                 locationResolved[0] = true;
                 saveNoteToDatabase(noteId, title, message, imageBitmap, userId, notesRef,
-                        dstWidth, dstHeight, 0.0, 0.0, "Unknown Location", activity);
+                        dstWidth, dstHeight, 0.0, 0.0, "Unknown Location", isUpdate, activity);
             }
         };
         timeoutHandler.postDelayed(timeoutRunnable, 3000); // timeout 3 detik
@@ -186,9 +196,9 @@ public class NoteHelper {
                             }
                         }
 
-                        saveNoteToDatabase(noteId, title, message, imageBitmap, userId, notesRef, dstWidth, dstHeight, latitude, longitude, locationName, activity);
+                        saveNoteToDatabase(noteId, title, message, imageBitmap, userId, notesRef, dstWidth, dstHeight, latitude, longitude, locationName, isUpdate, activity);
                     } else {
-                        saveNoteToDatabase(noteId, title, message, imageBitmap, userId, notesRef, dstWidth, dstHeight, 0.0, 0.0, "Unknown Location", activity);
+                        saveNoteToDatabase(noteId, title, message, imageBitmap, userId, notesRef, dstWidth, dstHeight, 0.0, 0.0, "Unknown Location", isUpdate, activity);
                         Toast.makeText(activity, "Locations is not found", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -208,10 +218,10 @@ public class NoteHelper {
                             Note note = noteSnapshot.getValue(Note.class);
                             if (note != null){
                                 noteList.add(note);
+                                noNoteText.setText("MyDiary");
                             }
                         }
                         adapter.notifyDataSetChanged();
-                        noNoteText.setText("MyDiary");
                     }
 
                     @Override

@@ -62,7 +62,7 @@ public class ImageHelper {
     //ambil image uri
     public static Uri getImageUri(Activity activity, Bitmap bitmap){
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bytes);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
         String path = MediaStore.Images.Media.insertImage(activity.getContentResolver(), bitmap, "TempImage", null);
         return Uri.parse(path);
     }
@@ -72,7 +72,7 @@ public class ImageHelper {
         Uri destinationUri = Uri.fromFile(new File(activity.getCacheDir(), "cropped_" + System.currentTimeMillis() + ".jpg"));
         UCrop.Options options = new UCrop.Options();
         options.setCompressionFormat(Bitmap.CompressFormat.JPEG);
-        options.setCompressionQuality(50);
+        options.setCompressionQuality(100);
 //        options.setFreeStyleCropEnabled(true); //artinya bisa freestyle crop, alias gak kotak
         UCrop.of(sourceUri, destinationUri)
                 .withOptions(options)
@@ -93,6 +93,9 @@ public class ImageHelper {
 
     //decode base64 ke bitmap
     public static Bitmap decodeBase64ToBitmap(String base64Str){
+        if (base64Str == null || base64Str.isEmpty()) {
+            return null; // atau Bitmap default
+        }
         byte[] decodedBytes = Base64.decode(base64Str, Base64.DEFAULT);
         Bitmap bitmap = BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
         return bitmap;
