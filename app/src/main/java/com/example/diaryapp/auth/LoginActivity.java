@@ -25,6 +25,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
@@ -33,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText etEmail, etPassword;
     Button btnCusLogin, btnRegister;
-    SignInButton btnGoogleLogin;
+    MaterialButton btnGoogleLogin;
     TextView txtRegister;
     FirebaseAuth mAuth;
     GoogleSignInClient mGoogleSignInClient;

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DiaryApp</string>
+    <string name="app_name">MyDiary</string>
     <string name="register">Register</string>
     <string name="email_address">Email Address</string>
     <string name="registration_form">Registration Form</string>
@@ -18,4 +18,5 @@
     <string name="don_t_have_an_account_yet_register_now">Don\'t have an account yet ? Register now</string>
     <string name="default_web_client_id">517104729540-lb95k0konjio10eeq68a4u91eoohfrvp.apps.googleusercontent.com</string>
     <string name="already_have_an_account_login_now">Already have an account ? Login Now</string>
+    <string name="sign_in">Sign In</string>
 </resources>
