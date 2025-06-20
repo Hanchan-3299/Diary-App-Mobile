@@ -29,6 +29,17 @@
         app:layout_constraintVertical_bias="1.0" />
 
 <!--    add button -->
+
+    <!--    exit button -->
+
+    <!--    profile button -->
+
+    <!--    no diary text -->
+
+    <!--    tittle text -->
+
+    <!--    add text -->
+
     <ImageButton
         android:id="@+id/btnMainAdd"
         android:layout_width="60dp"
@@ -43,10 +54,9 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.005"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/add_icon" />
 
-<!--    exit button -->
     <ImageButton
         android:id="@+id/btnMainExit"
         android:layout_width="60dp"
@@ -59,10 +69,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnMainAdd"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.005"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/exit_icon" />
 
-<!--    profile button -->
     <ImageButton
         android:id="@+id/btnMainProfil"
         android:layout_width="60dp"
@@ -73,17 +82,12 @@
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnMainAdd"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.005"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/profile_icon"
         app:tint="@color/orange" />
-
-<!--    no diary text -->
-
-    <!--    tittle text -->
-
-    <!--    add text -->
 
     <TextView
         android:id="@+id/txtMainNoDiaryText"
@@ -99,7 +103,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.333" />
+        app:layout_constraintVertical_bias="0.334" />
 
     <TextView
         android:id="@+id/txtMainBigTitle"
@@ -127,8 +131,8 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.355"
+        app:layout_constraintHorizontal_bias="0.359"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.855" />
+        app:layout_constraintVertical_bias="0.850" />
 </androidx.constraintlayout.widget.ConstraintLayout>

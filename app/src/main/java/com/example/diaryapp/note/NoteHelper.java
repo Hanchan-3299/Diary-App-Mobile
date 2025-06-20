@@ -222,8 +222,8 @@ public class NoteHelper {
                         for (DataSnapshot noteSnapshot : snapshot.getChildren()){
                             Note note = noteSnapshot.getValue(Note.class);
                             if (note != null){
-                                noteList.add(note);
                                 noNoteText.setText("MyDiary");
+                                noteList.add(note);
                             }
                         }
                         adapter.notifyDataSetChanged();
