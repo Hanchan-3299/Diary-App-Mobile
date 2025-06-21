@@ -6,8 +6,62 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_bg"
+    android:background="@drawable/blue_bg"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imgLoginLeaf"
+        android:layout_width="339dp"
+        android:layout_height="823dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.686"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.407"
+        app:srcCompat="@drawable/leaf" />
+
+    <ImageView
+        android:id="@+id/imgLoginCloudTop"
+        android:layout_width="206dp"
+        android:layout_height="444dp"
+        android:layout_marginStart="-55dp"
+        android:layout_marginTop="-175dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/cloud_w" />
+
+    <ImageView
+        android:id="@+id/imgLoginCloudBottom"
+        android:layout_width="206dp"
+        android:layout_height="444dp"
+        android:layout_marginEnd="-55dp"
+        android:layout_marginBottom="-175dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/cloud_w" />
+
+    <ImageView
+        android:id="@+id/imgLoginAkatsukiCloud"
+        android:layout_width="315dp"
+        android:layout_height="423dp"
+        android:layout_marginStart="-105dp"
+        android:layout_marginBottom="-200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/cloud_akatsuki" />
 
     <TextView
         android:id="@+id/txtLoginBigTitle"

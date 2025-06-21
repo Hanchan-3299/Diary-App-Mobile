@@ -12,6 +12,7 @@ import android.location.Location;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -213,7 +214,7 @@ public class NoteHelper {
 
 
     //load note ke recycler
-    public static void loadNotes(DatabaseReference notesRef, String currentUserId, List<Note> noteList, NoteAdapter adapter, TextView noNoteText, Activity activity){
+    public static void loadNotes(DatabaseReference notesRef, String currentUserId, List<Note> noteList, NoteAdapter adapter, TextView noNoteText, ImageView imgNoNote, Activity activity){
         notesRef.child(currentUserId)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
@@ -222,7 +223,8 @@ public class NoteHelper {
                         for (DataSnapshot noteSnapshot : snapshot.getChildren()){
                             Note note = noteSnapshot.getValue(Note.class);
                             if (note != null){
-                                noNoteText.setText("MyDiary");
+                                noNoteText.setVisibility(View.INVISIBLE);
+                                imgNoNote.setVisibility(View.INVISIBLE);
                                 noteList.add(note);
                             }
                         }

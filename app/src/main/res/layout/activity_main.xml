@@ -5,89 +5,86 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/home_bg"
+    android:background="@drawable/orange_bg"
     tools:context=".MainActivity">
 
-    <!-- RecyclerView untuk daftar catatan -->
 
     <!-- TextView: Tambah Catatan -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/noteRecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="50dp"
-        android:padding="12dp"
-        android:background="#AAFFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/txtMainAddTextHint"
+
+    <ImageView
+        android:id="@+id/imgMainSun"
+        android:layout_width="222dp"
+        android:layout_height="228dp"
+        android:layout_marginEnd="-75dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtMainBigTitle"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/sun" />
 
-<!--    add button -->
-
-    <!--    exit button -->
-
-    <!--    profile button -->
-
-    <!--    no diary text -->
-
-    <!--    tittle text -->
-
-    <!--    add text -->
-
-    <ImageButton
-        android:id="@+id/btnMainAdd"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="-5dp"
-        android:backgroundTint="@color/transparent"
-        android:contentDescription="add"
-        android:scaleType="fitCenter"
-        android:visibility="visible"
+    <ImageView
+        android:id="@+id/imgMainBubble2"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginBottom="52dp"
+        android:adjustViewBounds="true"
+        android:focusable="false"
+        android:scaleType="centerCrop"
+        android:scaleX="-1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.251"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/add_icon" />
+        app:srcCompat="@drawable/baloon_chat" />
 
-    <ImageButton
-        android:id="@+id/btnMainExit"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="-5dp"
-        android:backgroundTint="@color/transparent"
-        android:contentDescription="exit"
-        android:scaleType="fitCenter"
+    <ImageView
+        android:id="@+id/imgMainBubble1"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:adjustViewBounds="true"
+        android:focusable="false"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnMainAdd"
+        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/exit_icon" />
+        app:layout_constraintVertical_bias="0.363"
+        app:srcCompat="@drawable/baloon_chat" />
 
-    <ImageButton
-        android:id="@+id/btnMainProfil"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="-5dp"
-        android:backgroundTint="@color/transparent"
-        android:contentDescription="profile"
-        android:scaleType="fitCenter"
+    <ImageView
+        android:id="@+id/imgMainCloudTop"
+        android:layout_width="152dp"
+        android:layout_height="480dp"
+        android:layout_marginStart="-25dp"
+        android:layout_marginTop="-200dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnMainAdd"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/clound_orange1" />
+
+    <ImageView
+        android:id="@+id/imgMainCloudBottom"
+        android:layout_width="168dp"
+        android:layout_height="547dp"
+        android:layout_marginEnd="-40dp"
+        android:layout_marginBottom="-160dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/profile_icon"
-        app:tint="@color/orange" />
+        app:srcCompat="@drawable/clound_orange2" />
+
 
     <TextView
         android:id="@+id/txtMainNoDiaryText"
@@ -98,12 +95,12 @@
         android:textColor="@color/white"
         android:textSize="24sp"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.334" />
+        app:layout_constraintBottom_toBottomOf="@+id/imgMainBubble1"
+        app:layout_constraintEnd_toEndOf="@+id/imgMainBubble1"
+        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintStart_toStartOf="@+id/imgMainBubble1"
+        app:layout_constraintTop_toTopOf="@+id/imgMainBubble1"
+        app:layout_constraintVertical_bias="0.445" />
 
     <TextView
         android:id="@+id/txtMainBigTitle"
@@ -129,10 +126,92 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/imgMainBubble2"
+        app:layout_constraintEnd_toEndOf="@+id/imgMainBubble2"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="@+id/imgMainBubble2"
+        app:layout_constraintTop_toTopOf="@+id/imgMainBubble2"
+        app:layout_constraintVertical_bias="0.443" />
+
+    <!-- RecyclerView untuk daftar catatan -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/noteRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="50dp"
+        android:background="#AAFFFFFF"
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtMainAddTextHint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMainBigTitle"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <View
+        android:id="@+id/myRectangleView"
+        android:layout_width="430dp"
+        android:layout_height="70dp"
+        android:background="@drawable/menu_bar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.359"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.850" />
+        app:layout_constraintVertical_bias="1.022"/>
+
+
+    <ImageButton
+        android:id="@+id/btnMainAdd"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/transparent"
+        android:contentDescription="add"
+        android:scaleType="fitCenter"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/myRectangleView"
+        app:layout_constraintEnd_toEndOf="@+id/myRectangleView"
+        app:layout_constraintHorizontal_bias="0.282"
+        app:layout_constraintStart_toEndOf="@+id/btnMainProfil"
+        app:layout_constraintTop_toTopOf="@+id/myRectangleView"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/add_icon" />
+
+    <ImageButton
+        android:id="@+id/btnMainExit"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/transparent"
+        android:contentDescription="exit"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/myRectangleView"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintStart_toEndOf="@+id/btnMainAdd"
+        app:layout_constraintTop_toTopOf="@+id/myRectangleView"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/exit_icon" />
+
+    <ImageButton
+        android:id="@+id/btnMainProfil"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginEnd="318dp"
+        android:layout_marginBottom="-5dp"
+        android:backgroundTint="@color/transparent"
+        android:contentDescription="profile"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/myRectangleView"
+        app:layout_constraintEnd_toEndOf="@+id/myRectangleView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myRectangleView"
+        app:layout_constraintTop_toTopOf="@+id/myRectangleView"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/profile_icon"
+        app:tint="@color/orange" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,11 +6,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/regist_bg">
+    android:background="@drawable/blue_bg">
+
+    <ImageView
+        android:id="@+id/imgRegisterLeaf"
+        android:layout_width="339dp"
+        android:layout_height="823dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.686"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.407"
+        app:srcCompat="@drawable/leaf" />
+
+    <ImageView
+        android:id="@+id/imgRehisterCloudBottom1"
+        android:layout_width="206dp"
+        android:layout_height="444dp"
+        android:layout_marginStart="-55dp"
+        android:layout_marginBottom="-170dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/cloud_w" />
 
 
-        <!-- Teks atas -->
-        <TextView
+    <!-- Teks atas -->
+
+    <ImageView
+        android:id="@+id/imgRegisterCloudBottom2"
+        android:layout_width="206dp"
+        android:layout_height="444dp"
+        android:layout_marginEnd="-40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.964"
+        app:srcCompat="@drawable/cloud_w" />
+
+    <ImageView
+        android:id="@+id/imgRegisterAkatsukiCloud"
+        android:layout_width="315dp"
+        android:layout_height="423dp"
+        android:layout_marginTop="-180dp"
+        android:layout_marginEnd="-90dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/cloud_akatsuki2" />
+
+    <TextView
             android:id="@+id/txtRegisterBigTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -108,19 +162,19 @@
         tools:ignore="Autofill,HardcodedText,TextFields,TextContrastCheck,VisualLintTextFieldSize" />
 
     <Button
-            android:id="@+id/btnRegisterRegister"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginTop="24dp"
-            android:backgroundTint="#ED6A1F"
-            android:text="@string/register"
-            android:textAlignment="center"
-            android:textColor="#212121"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etRegisterPassword"
-            app:layout_constraintVertical_bias="0.161" />
+        android:id="@+id/btnRegisterRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/orange_young"
+        android:text="@string/register"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etRegisterPassword"
+        app:layout_constraintVertical_bias="0.161" />
 
     <ImageView
         android:id="@+id/imageView6"

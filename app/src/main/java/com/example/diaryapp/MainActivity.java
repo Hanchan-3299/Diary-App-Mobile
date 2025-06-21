@@ -2,7 +2,9 @@ package com.example.diaryapp;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     TextView noNotesText;
+    ImageView bubbleNoNoteText;
     List<Note> noteList;
     NoteAdapter adapter;
     DatabaseReference notesRef;
@@ -61,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.noteRecyclerView);
         noNotesText = findViewById(R.id.txtMainNoDiaryText);
+        bubbleNoNoteText = findViewById(R.id.imgMainBubble1);
+
         ImageView addNote = findViewById(R.id.btnMainAdd);
 
         //ambil id user yang udh login
@@ -84,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
-        NoteHelper.loadNotes(notesRef, currentUserId, noteList, adapter, noNotesText, MainActivity.this);
+        NoteHelper.loadNotes(notesRef, currentUserId, noteList, adapter, noNotesText, bubbleNoNoteText, MainActivity.this);
 
 
 
@@ -120,7 +125,9 @@ public class MainActivity extends AppCompatActivity {
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            Window window = getWindow();
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            window.setNavigationBarColor(Color.WHITE);
             return insets;
         });
     }

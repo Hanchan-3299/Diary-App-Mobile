@@ -5,13 +5,71 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/detail_bg_new"
+    android:background="@drawable/orange_bg"
     tools:context=".MainActivity">
 
 
     <!--    location text -->
 
     <!--    caption text -->
+
+    <ImageView
+        android:id="@+id/imgDetailSun"
+        android:layout_width="222dp"
+        android:layout_height="228dp"
+        android:layout_marginEnd="-75dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/sun" />
+
+    <View
+        android:id="@+id/imgDetailContainer"
+        android:layout_width="344dp"
+        android:layout_height="675dp"
+        android:background="@drawable/rounded_corner"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMainBigTitle"
+        app:layout_constraintVertical_bias="0.500" />
+
+    <ImageView
+        android:id="@+id/imgDetailCloudTop"
+        android:layout_width="152dp"
+        android:layout_height="480dp"
+        android:layout_marginStart="-25dp"
+        android:layout_marginTop="-200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/clound_orange1" />
+
+    <ImageView
+        android:id="@+id/imgDetailCloudBottom"
+        android:layout_width="168dp"
+        android:layout_height="547dp"
+        android:layout_marginEnd="-40dp"
+        android:layout_marginBottom="-220dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/clound_orange2" />
+
+    <!--    add button -->
+
+    <!--    exit button -->
 
     <TextView
         android:id="@+id/txtMainBigTitle"
@@ -23,14 +81,10 @@
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.071" />
-
-    <!--    add button -->
-
-    <!--    exit button -->
+        app:layout_constraintVertical_bias="0.019" />
 
     <TextView
         android:id="@+id/txtDetailDate"
@@ -49,9 +103,9 @@
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imgDetailContainer"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imgDetailContainer"
         app:layout_constraintTop_toBottomOf="@+id/imgDetailNote"
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="ContentDescription,UseCompatTextViewDrawableXml,VisualLintBounds" />
@@ -73,11 +127,10 @@
         android:textColorHint="@color/gray"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imgDetailContainer"
+        app:layout_constraintStart_toStartOf="@+id/imgDetailContainer"
         app:layout_constraintTop_toBottomOf="@+id/imgDetailNote"
-        app:layout_constraintVertical_bias="0.15"
+        app:layout_constraintVertical_bias="0.097"
         tools:ignore="ContentDescription,UseCompatTextViewDrawableXml,VisualLintBounds" />
 
     <TextView
@@ -88,12 +141,12 @@
         android:text="@string/title"
         android:textColor="@color/black"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/imgDetailContainer"
+        app:layout_constraintEnd_toEndOf="@+id/imgDetailContainer"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.221" />
+        app:layout_constraintStart_toStartOf="@+id/imgDetailContainer"
+        app:layout_constraintTop_toTopOf="@+id/imgDetailContainer"
+        app:layout_constraintVertical_bias="0.026" />
 
     <ImageView
         android:id="@+id/imgDetailNote"
@@ -103,9 +156,9 @@
         android:background="@android:drawable/ic_menu_gallery"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imgDetailContainer"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imgDetailContainer"
         app:layout_constraintTop_toBottomOf="@+id/txtDetailTitle"
         app:layout_constraintVertical_bias="0.03"
         tools:ignore="ImageContrastCheck"
@@ -115,9 +168,9 @@
     <TextView
         android:id="@+id/multiTxtDetailMessage"
         android:layout_width="300dp"
-        android:layout_height="0dp"
+        android:layout_height="210dp"
         android:autofillHints="null"
-        android:background="@drawable/rounded_side"
+        android:background="@drawable/transparant_rounded_corner"
         android:ems="10"
         android:fontFamily="@font/questrial"
         android:gravity="top|center_horizontal"
@@ -126,11 +179,10 @@
         android:textColor="@color/black"
         android:textColorHint="@color/gray"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/btnDetailEdit"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/imgDetailContainer"
+        app:layout_constraintEnd_toEndOf="@+id/imgDetailContainer"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imgDetailContainer"
         app:layout_constraintTop_toBottomOf="@+id/txtDetailLoc"
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="SpeakableTextPresentCheck,TextViewEdits" />
@@ -143,12 +195,12 @@
         android:contentDescription="@string/add"
         android:scaleType="fitCenter"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/imgDetailContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.918"
+        app:layout_constraintVertical_bias="0.978"
         app:srcCompat="@android:drawable/ic_menu_edit"
         app:tint="@color/black" />
 
@@ -159,12 +211,12 @@
         android:backgroundTint="@color/transparent"
         android:contentDescription="@string/exit"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/imgDetailContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toEndOf="@+id/btnDetailEdit"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.919"
+        app:layout_constraintVertical_bias="0.978"
         app:srcCompat="@drawable/exit_icon"
         app:tint="@color/black" />
 
@@ -175,12 +227,12 @@
         android:backgroundTint="@color/transparent"
         android:contentDescription="@string/profile"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/imgDetailContainer"
         app:layout_constraintEnd_toStartOf="@+id/btnDetailEdit"
         app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.918"
+        app:layout_constraintVertical_bias="0.979"
         app:srcCompat="@android:drawable/ic_menu_delete"
         app:tint="@color/black" />
 

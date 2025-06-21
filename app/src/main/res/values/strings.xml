@@ -19,4 +19,5 @@
     <string name="default_web_client_id">517104729540-lb95k0konjio10eeq68a4u91eoohfrvp.apps.googleusercontent.com</string>
     <string name="already_have_an_account_login_now">Already have an account ? Login Now</string>
     <string name="sign_in">Sign In</string>
+    <string name="write_a_caption_and_hastag">Write a caption and hastag...</string>
 </resources>
